@@ -663,4 +663,40 @@ window.addEventListener("DOMContentLoaded", () => {
   updateFluidScale();
   // Apply default preset
   applyPreset("literary");
+  initMobileActionsBar();
 });
+
+// --- Mobile Actions Bar ---
+function initMobileActionsBar() {
+  const mobileBar = document.getElementById("mobile-actions-bar");
+  const btnDownloadMobile = document.getElementById("btn-download-mobile");
+  const btnShareXMobile = document.getElementById("btn-share-x-mobile");
+  const btnDownload = document.getElementById("btn-download");
+  const btnShareX = document.getElementById("btn-share-x");
+  if (!mobileBar) return;
+
+  // Show/hide the mobile bar based on screen width
+  function updateMobileBarVisibility() {
+    if (window.innerWidth <= 1000) {
+      mobileBar.style.display = "flex";
+    } else {
+      mobileBar.style.display = "none";
+    }
+  }
+  updateMobileBarVisibility();
+  window.addEventListener("resize", updateMobileBarVisibility);
+
+  // Wire mobile download button to the same handler as desktop
+  if (btnDownloadMobile && btnDownload) {
+    btnDownloadMobile.addEventListener("click", () => {
+      btnDownload.click();
+    });
+  }
+
+  // Wire mobile share button to the same handler as desktop
+  if (btnShareXMobile && btnShareX) {
+    btnShareXMobile.addEventListener("click", () => {
+      btnShareX.click();
+    });
+  }
+}
