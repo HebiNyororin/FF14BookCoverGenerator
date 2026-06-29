@@ -585,7 +585,7 @@ function updateFluidScale() {
   const isMobile = window.innerWidth <= 1000;
   let scale;
   if (isMobile) {
-    scale = (window.innerWidth - 50) / 600 * 0.8;
+    scale = (window.innerWidth - 50) / 600 * 0.7;
   } else {
     scale = (window.innerWidth - 450) / 600;
   }
@@ -664,25 +664,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // Apply default preset
   applyPreset("literary");
   initMobileActionsBar();
-  updateMobileHeaderOffset();
 });
-
-// --- Mobile Header Offset (for sticky positioning below fixed header) ---
-function updateMobileHeaderOffset() {
-  const headerEl = document.querySelector('header');
-  if (!headerEl) return;
-  // requestAnimationFrame ensures fixed header is already rendered
-  requestAnimationFrame(() => {
-    if (window.innerWidth <= 1000) {
-      const h = headerEl.getBoundingClientRect().height;
-      document.documentElement.style.setProperty('--mobile-header-height', h + 'px');
-    } else {
-      document.documentElement.style.setProperty('--mobile-header-height', '0px');
-    }
-  });
-}
-window.addEventListener('resize', updateMobileHeaderOffset);
-
 
 // --- Mobile Actions Bar ---
 function initMobileActionsBar() {
