@@ -256,7 +256,7 @@ function initPlaystylesSelector() {
 }
 
 // --- Text Inputs ---
-inputName.addEventListener("input", e => { cardTitleMain.textContent = e.target.value || "リズン・ライト"; });
+inputName.addEventListener("input", e => { cardTitleMain.textContent = e.target.value || "Warrior of Light"; });
 inputAuthorLabel.addEventListener("input", e => { cardAuthorLabel.textContent = e.target.value; });
 inputCatchcopy.addEventListener("input", e => { cardCatchcopy.textContent = e.target.value || "誰かのために"; });
 inputCatchcopy2.addEventListener("input", e => { cardCatchcopy2.textContent = e.target.value; });
