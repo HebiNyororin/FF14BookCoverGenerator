@@ -17,6 +17,7 @@
   --accent-ui: #7b5ea7;
 
   --preview-scale: 1;
+  --mobile-header-height: 0px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -772,18 +773,29 @@ footer {
   background: #fff;
 }
 
-
 @media (max-width: 1000px) {
-  .container {
-    flex-direction: column;
-    /* プレビューを order で先頭に表示 */
+  /* ヘッダーを画面上部に固定＋ステータスバー／Dynamic Island対応 */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding-top: env(safe-area-inset-top, 0px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
 
-  /* プレビューを先頭に並び替え（HTML順序を変えずにCSSで制御） */
+  /* ヘッダー固定分の下広げ */
+  .container {
+    flex-direction: column;
+    padding-top: var(--mobile-header-height);
+  }
+
+  /* プレビューを先頭に並べ替え（HTML順序を変えずにCSSで制御） */
   .preview-container {
     order: -1;
     position: sticky;
-    top: 0;
+    top: var(--mobile-header-height);
     z-index: 50;
     background: var(--bg-color);
     padding-bottom: 4px;
@@ -830,6 +842,7 @@ footer {
     width: 100%;
   }
 }
+
 
 /* =============================================
    SHARE MODAL (ポップアップダイアログ)
