@@ -585,7 +585,7 @@ function updateFluidScale() {
   const isMobile = window.innerWidth <= 1000;
   let scale;
   if (isMobile) {
-    scale = (window.innerWidth - 50) / 600 * 0.5;
+    scale = (window.innerWidth - 50) / 600 * 0.45;
   } else {
     scale = (window.innerWidth - 450) / 600;
   }
